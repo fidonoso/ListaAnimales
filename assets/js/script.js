@@ -23,10 +23,8 @@ class Propietario{
     settelefono(nuevophone){
         this._telefono=nuevophone
     };
-
-
     datosPropietario(){
-        return `Propietario: ${this._nombreProp}| Direccion: ${this._direccion}| Teléfono: ${this._telefono}`
+        return `El nombre del dueño es: ${this._nombreProp}. El domicilio es: ${this._direccion}, y el número telefónico de contacto: ${this._telefono}`
 
     }
 }
@@ -38,6 +36,9 @@ class Animal extends Propietario{
     gettipo(){
         return this._tipo 
     }
+    // obtenerTipo(){
+    //     return `El tipo de animal es un ${this._tipo},`
+    // }
 }
 class Mascota extends Animal{
     constructor(nombreProp, direccion, telefono, tipo, nombreM, enfermedad){
@@ -57,7 +58,30 @@ class Mascota extends Animal{
     setenfermedad(nuevaenfermedad){
         this._enfermedad=nuevaenfermedad
     };
+   
 }
 
-var mario = new Mascota('Kiko','maule 28', '685465465','Perro', 'pepi','vieja')
-console.log(mario)
+// var mario = new Mascota('Kiko','maule 28', '685465465','Perro', 'pepi','vieja')
+// console.log(mario)
+
+
+var btnAgregar=document.querySelector('button')
+btnAgregar.addEventListener('click',(event)=>{
+   event.preventDefault();
+    // alert("hola")
+let propietario =document.getElementById('propietario').value
+let phono =document.getElementById('telefono').value
+let address =document.getElementById('direccion').value
+let nombreMascota =document.getElementById('nombreMascota').value
+let tipo =document.getElementById('tipo').value
+let motivo =document.getElementById('enfermedad').value
+let lista =document.querySelector('ul')
+let cliente = new Mascota(propietario, address, phono, tipo, nombreMascota, motivo)
+let li=document.createElement('li')
+li.innerHTML=`${cliente.datosPropietario()}`    
+lista.appendChild(li)
+let li2=document.createElement('li')
+li2.innerHTML=`El tipo de animal es un :${cliente.gettipo()}, mientras que el nombre de la mascota es: ${cliente.getnombre()} y la enfermedad es: ${cliente.getenfermedad()}`    
+lista.appendChild(li2)
+
+})
