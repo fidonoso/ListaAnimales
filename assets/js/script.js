@@ -88,6 +88,7 @@ var cont=0
             el.value=""               
             })
         alert(`${cliente.getnombre()} fue agregado a la lista con éxito`)
+        console.log(cliente)
         }else{
         alert("Complete todos los campos")
     }
