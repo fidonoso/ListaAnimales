@@ -61,27 +61,39 @@ class Mascota extends Animal{
    
 }
 
-// var mario = new Mascota('Kiko','maule 28', '685465465','Perro', 'pepi','vieja')
-// console.log(mario)
-
-
 var btnAgregar=document.querySelector('button')
 btnAgregar.addEventListener('click',(event)=>{
    event.preventDefault();
     // alert("hola")
-let propietario =document.getElementById('propietario').value
-let phono =document.getElementById('telefono').value
-let address =document.getElementById('direccion').value
-let nombreMascota =document.getElementById('nombreMascota').value
-let tipo =document.getElementById('tipo').value
-let motivo =document.getElementById('enfermedad').value
-let lista =document.querySelector('ul')
-let cliente = new Mascota(propietario, address, phono, tipo, nombreMascota, motivo)
-let li=document.createElement('li')
-li.innerHTML=`${cliente.datosPropietario()}`    
-lista.appendChild(li)
-let li2=document.createElement('li')
-li2.innerHTML=`El tipo de animal es un :${cliente.gettipo()}, mientras que el nombre de la mascota es: ${cliente.getnombre()} y la enfermedad es: ${cliente.getenfermedad()}`    
-lista.appendChild(li2)
+var todosInputs=document.querySelectorAll('input')
+var cont=0
+    todosInputs.forEach(el =>{
+        if(el.value==""){
+            cont=cont+1            
+        }
+    })
+    if(cont==0){
+        
+        let propietario =document.getElementById('propietario').value
+        let phono =document.getElementById('telefono').value
+        let address =document.getElementById('direccion').value
+        let nombreMascota =document.getElementById('nombreMascota').value
+        let tipo =document.getElementById('tipo').value
+        let motivo =document.getElementById('enfermedad').value
+        let lista =document.querySelector('ul')
+        let cliente = new Mascota(propietario, address, phono, tipo, nombreMascota, motivo)
+        let li=document.createElement('li')
+        li.innerHTML=`${cliente.datosPropietario()}`    
+        lista.appendChild(li)
+        let li2=document.createElement('li')
+        li2.innerHTML=`El tipo de animal es un :${cliente.gettipo()}, mientras que el nombre de la mascota es: ${cliente.getnombre()} y la enfermedad es: ${cliente.getenfermedad()}`    
+        lista.appendChild(li2)
+        todosInputs.forEach(el =>{
+            el.value=""               
+            })
+        alert(`${cliente.getnombre()} fue agregado a la lista con éxito`)
+        }else{
+        alert("Complete todos los campos")
+    }
 
 })
