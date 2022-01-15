@@ -36,9 +36,7 @@ class Animal extends Propietario{
     gettipo(){
         return this._tipo 
     }
-    // obtenerTipo(){
-    //     return `El tipo de animal es un ${this._tipo},`
-    // }
+
 }
 class Mascota extends Animal{
     constructor(nombreProp, direccion, telefono, tipo, nombreM, enfermedad){
@@ -60,11 +58,9 @@ class Mascota extends Animal{
     };
    
 }
-
 var btnAgregar=document.querySelector('button')
 btnAgregar.addEventListener('click',(event)=>{
    event.preventDefault();
-    // alert("hola")
 var todosInputs=document.querySelectorAll('input')
 var cont=0
     todosInputs.forEach(el =>{
